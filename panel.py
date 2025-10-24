@@ -19,6 +19,11 @@ def get_config_path(user_id):
     base.mkdir(parents=True, exist_ok=True)
     return base / f"config-{user_id}.json"
 
+st.write(f"HOME={Path.home()}")
+st.write(f"HIKKA_DIR={os.getenv('HIKKA_DIR')}")
+p = get_config_path(user_id)
+st.write(f"Config path={p}, exists={p.exists()}")
+
 def load_config(user_id):
     config_path = get_config_path(user_id)
     try:
