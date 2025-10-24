@@ -17,12 +17,11 @@ def get_base_dir():
 def get_config_path(user_id):
     base = get_base_dir()
     base.mkdir(parents=True, exist_ok=True)
+    st.write(f"HOME={Path.home()}")
+    st.write(f"HIKKA_DIR={os.getenv('HIKKA_DIR')}")
+    p = get_config_path(user_id)
+    st.write(f"Config path={p}, exists={p.exists()}")
     return base / f"config-{user_id}.json"
-
-st.write(f"HOME={Path.home()}")
-st.write(f"HIKKA_DIR={os.getenv('HIKKA_DIR')}")
-p = get_config_path(user_id)
-st.write(f"Config path={p}, exists={p.exists()}")
 
 def load_config(user_id):
     config_path = get_config_path(user_id)
