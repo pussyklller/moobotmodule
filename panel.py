@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 def get_config_path(user_id):
-    hikka_dir = Path.home() / "Hikka"
+    hikka_dir = Path.home() / "data"
     config_file = hikka_dir / f"config-{user_id}.json"
     return config_file
 
