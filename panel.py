@@ -11,10 +11,13 @@ st.set_page_config(
     layout="wide"
 )
 
+def get_base_dir():
+    return Path(os.getenv("HIKKA_DIR", "/root/data"))
+
 def get_config_path(user_id):
-    hikka_dir = Path.home() / "data"
-    config_file = hikka_dir / f"config-{user_id}.json"
-    return config_file
+    base = get_base_dir()
+    base.mkdir(parents=True, exist_ok=True)
+    return base / f"config-{user_id}.json"
 
 def load_config(user_id):
     config_path = get_config_path(user_id)
